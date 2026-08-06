@@ -1,0 +1,14 @@
+[Unit]
+Description=AirWatch Dashboard API
+After=network.target
+
+[Service]
+User=raspberry
+WorkingDirectory=/home/raspberry/airwatch
+EnvironmentFile=/home/raspberry/airwatch/.env
+ExecStart=/home/raspberry/airwatch/venv/bin/uvicorn api.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=AirWatch Sensor Collector
+After=network.target
+
+[Service]
+User=raspberry
+WorkingDirectory=/home/raspberry/airwatch
+EnvironmentFile=/home/raspberry/airwatch/.env
+ExecStart=/home/raspberry/airwatch/venv/bin/python sensor/collector.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

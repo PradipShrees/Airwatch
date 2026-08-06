@@ -1,0 +1,14 @@
+[Unit]
+Description=AirWatch Device Health Service
+After=network.target
+
+[Service]
+User=raspberry
+WorkingDirectory=/home/raspberry/airwatch
+EnvironmentFile=/home/raspberry/airwatch/.env
+ExecStart=/home/raspberry/airwatch/venv/bin/python services/device_health/main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
